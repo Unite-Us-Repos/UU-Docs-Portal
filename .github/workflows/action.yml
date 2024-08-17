@@ -1,0 +1,90 @@
+name: Deploy to WP Engine
+env:
+  WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPENGINE_SFTP_PASSWORD }}
+  THEME_NAME: uudocsv2
+  DEVELOP_WPE_INSTALL_NAME: docportaldev
+  STAGING_WPE_INSTALL_NAME: docportalstg
+  MASTER_WPE_INSTALL_NAME: docportalprd
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - master
+
+jobs:
+  set-env-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      WPE_INSTALL_NAME: ${{ steps.set-env.outputs.WPE_INSTALL_NAME }}
+    steps:
+      - name: Set WPE_INSTALL_NAME based on branch
+        id: set-env
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "WPE_INSTALL_NAME=${{ env.DEVELOP_WPE_INSTALL_NAME }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref }}" == "refs/heads/staging" ]; then
+            echo "WPE_INSTALL_NAME=${{ env.STAGING_WPE_INSTALL_NAME }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref }}" == "refs/heads/master" ]; then
+            echo "WPE_INSTALL_NAME=${{ env.MASTER_WPE_INSTALL_NAME }}" >> $GITHUB_OUTPUT
+          fi
+  js-build:
+    needs: set-env-vars
+    runs-on: ubuntu-latest
+    env:
+      WPE_INSTALL_NAME: ${{ needs.set-env-vars.outputs.WPE_INSTALL_NAME }}
+    steps:
+      - name: Check out the git repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.13.1
+
+      - name: Install js/css dependencies
+        uses: borales/actions-yarn@v5
+        with:
+          dir: wp-content/themes/${{ env.THEME_NAME }}
+          cmd: install
+
+      - name: Build js/css
+        uses: borales/actions-yarn@v5
+        with:
+          dir: wp-content/themes/${{ env.THEME_NAME }}
+          cmd: build
+
+      - name: Clean up node modules (not needed to deploy)
+        run: rm -rf wp-content/themes/${{ env.THEME_NAME }}/node_modules
+
+      - name: Deploy to WPE
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          SCRIPT: post-deploy.sh
+          WPE_ENV: ${{ env.WPE_INSTALL_NAME }}
+
+  php-build:
+    needs: set-env-vars
+    runs-on: ubuntu-latest
+    env:
+      WPE_INSTALL_NAME: ${{ needs.set-env-vars.outputs.WPE_INSTALL_NAME }}
+    steps:
+      - name: Check out the git repo
+        uses: actions/checkout@v4
+
+      - name: Setup PHP, with Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml # Add any other PHP extensions you need
+          tools: composer:v2 # Specify Composer version if needed
+
+      - name: Run composer install in theme directory
+        run: cd wp-content/themes/${{ env.THEME_NAME }} && composer install && cd -
+
+      - name: Deploy to WPE
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          SCRIPT: post-deploy.sh
+          WPE_ENV: ${{ env.WPE_INSTALL_NAME }}

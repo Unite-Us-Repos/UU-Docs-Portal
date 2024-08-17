@@ -1,0 +1,195 @@
+{
+    "key": "group_62a804d78a5ab",
+    "title": "Sections",
+    "fields": [
+        {
+            "key": "field_62a804e5ba476",
+            "label": "Sections",
+            "name": "sections",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_flexible_advanced": 1,
+            "acfe_flexible_stylised_button": 1,
+            "acfe_flexible_layouts_templates": 0,
+            "acfe_flexible_layouts_placeholder": 0,
+            "acfe_flexible_layouts_thumbnails": 0,
+            "acfe_flexible_layouts_settings": 0,
+            "acfe_flexible_layouts_locations": 0,
+            "acfe_flexible_async": [],
+            "acfe_flexible_add_actions": [
+                "toggle",
+                "copy"
+            ],
+            "acfe_flexible_remove_button": [
+                "duplicate"
+            ],
+            "acfe_flexible_layouts_state": "user",
+            "acfe_flexible_modal_edit": {
+                "acfe_flexible_modal_edit_enabled": "0",
+                "acfe_flexible_modal_edit_size": "large"
+            },
+            "acfe_flexible_modal": {
+                "acfe_flexible_modal_enabled": "0",
+                "acfe_flexible_modal_title": false,
+                "acfe_flexible_modal_size": "full",
+                "acfe_flexible_modal_col": "4",
+                "acfe_flexible_modal_categories": false
+            },
+            "acfe_flexible_grid": {
+                "acfe_flexible_grid_enabled": "0",
+                "acfe_flexible_grid_align": "center",
+                "acfe_flexible_grid_valign": "stretch",
+                "acfe_flexible_grid_wrap": false
+            },
+            "layouts": {
+                "layout_62b24e2bc30f0": {
+                    "key": "layout_62b24e2bc30f0",
+                    "name": "table",
+                    "label": "Table",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62b24e2bc30f4",
+                            "label": "Table ID",
+                            "name": "table_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_62b24e2bc30f6",
+                            "label": "Table",
+                            "name": "table",
+                            "aria-label": "",
+                            "type": "table",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "use_header": 1,
+                            "use_caption": 1
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_modal_edit_size": "",
+                    "acfe_flexible_render_template": false,
+                    "acfe_flexible_render_style": false,
+                    "acfe_flexible_render_script": false,
+                    "acfe_flexible_thumbnail": false,
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_layout_locations": [],
+                    "acfe_flexible_category": false,
+                    "acfe_layout_col": "auto",
+                    "acfe_layout_allowed_col": false
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Section",
+            "acfe_flexible_hide_empty_message": false,
+            "acfe_flexible_empty_message": "",
+            "acfe_flexible_layouts_previews": false,
+            "acfe_flexible_grid_container": false
+        },
+        {
+            "key": "field_62bf4a1e491c9",
+            "label": "Markdown instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<div style=\"font-family: monospace; padding: 0.5rem 1rem; background: #222;color: #ddd;\">\r\nBullet Lists\r\n\r\n* Start each list item with an asterisk\r\n* Followed by a space\r\n* Do a hard return at end of line\r\n\r\nNumbered Lists\r\n\r\n1. Start each line with the number 1\r\n2. Followed a period and a space\r\n3. Do a hard return at end of line\r\n\r\nTo start a paragraph do two hard returns. The following markdown will produce _italic_ and **bold** text. To `highlight code` text, use a starting and ending back-tick.\r\n\r\nYou can insert a link using the following format: \r\n[Page Title](https:\/\/www.example.com)\r\n\r\n_italic_\r\n\r\n__bold__\r\n\r\n`code`\r\n<\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_62bf4be57761e",
+            "label": "Markdown Output",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<div style=\"padding: 0.5rem 1rem;\">\r\n<p>Bullet Lists<\/p>\r\n<ul class=\"list-disc\">\r\n<li>Start each list item with an asterisk<\/li>\r\n<li>Followed by a space<\/li>\r\n<li>Do a hard return at end of line<\/li>\r\n<\/ul>\r\n<p>Numbered Lists<\/p>\r\n<ol>\r\n<li>Start each line with the number 1<\/li>\r\n<li>Followed a period and a space<\/li>\r\n<li>Do a hard return at end of line<\/li>\r\n<\/ol>\r\n<p>To start a paragraph do two hard returns. The following markdown will produce <em>italic<\/em> and <strong>bold<\/strong> text. To <code>highlight code<\/code> text, use a starting and ending back-tick.<\/p>\r\n<p>You can insert a link using the following format: <br \/><a href=\"https:\/\/www.example.com\">Page Title<\/a><\/p>\r\n<p><em>italic<\/em><\/p>\r\n<p><strong>bold<\/strong><\/p>\r\n<p><code>code<\/code><\/p>\r\n<\/div>",
+            "new_lines": "",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "release_note"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "guide"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "block_editor"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1681181205
+}

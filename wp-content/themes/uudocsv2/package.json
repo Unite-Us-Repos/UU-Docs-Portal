@@ -1,0 +1,33 @@
+{
+  "name": "sage",
+  "private": true,
+  "browserslist": [
+    "extends @roots/browserslist-config"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "bud dev",
+    "build": "bud build",
+    "translate": "yarn translate:pot && yarn translate:update",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+    "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
+    "translate:compile": "yarn translate:mo && yarn translate:js",
+    "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
+    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+  },
+  "devDependencies": {
+    "@roots/bud": "^6.12.0",
+    "@roots/bud-tailwindcss": "^6.12.0",
+    "@roots/sage": "^6.12.0"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.12.2",
+    "@wilkr/alpine-ripple": "^1.1.2",
+    "alpinejs": "^3.12.0",
+    "caniuse-lite": "^1.0.30001640",
+    "tocbot": "^4.21.0"
+  }
+}
