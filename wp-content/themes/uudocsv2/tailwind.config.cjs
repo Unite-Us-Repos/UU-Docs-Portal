@@ -45,8 +45,8 @@ module.exports = {
         brand: '#0B1538',
         action: '#216CFF',
         'marketing-product': '#0349F9',
-        'marketing-feature': '#825EB8',
-        'marketing-user': '#F07012',
+        'marketing-feature': '#9643FF',
+        'marketing-user': '#F69C09',
         'pale-blue' : '#eef5fc',
         'pale-blue-dark' : '#C7D8E8',
         'action-dark': '#1A53C6',
@@ -55,11 +55,11 @@ module.exports = {
         dark: '#0B1538',
         light: '#eef5fc',
         'light-gradient': '#eef5fc',
-        purple: '#825EB8',
+        purple: '#9643FF',
         morado: '#712F79',
         verde: '#117E15',
         'rojo' : '#CF2A2A',
-        orange : '#DA6625',
+        orange : '#F69C09',
         'blue': {
           100: '#eef5fc', // pale blue
           200: '#e3ebf3', // medium pale blue

@@ -1141,7 +1141,7 @@ table p {
   margin:0 !important;
   padding:0 !important;
 }
-.newsletter form li::before {
+.newsletter form li::before  {
   content: '' !important;
   display: none !important;
 }

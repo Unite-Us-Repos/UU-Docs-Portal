@@ -370,7 +370,7 @@
         {
           "name": "Orange",
           "slug": "orange",
-          "color": "#da6625"
+          "color": "#f69c09"
         },
         {
           "name": "Amber 50",
@@ -980,7 +980,7 @@
         {
           "name": "Purple",
           "slug": "purple",
-          "color": "#825eb8"
+          "color": "#9643ff"
         },
         {
           "name": "Fuchsia 50",
@@ -1175,12 +1175,12 @@
         {
           "name": "Marketing-feature",
           "slug": "marketing-feature",
-          "color": "#825eb8"
+          "color": "#9643ff"
         },
         {
           "name": "Marketing-user",
           "slug": "marketing-user",
-          "color": "#f07012"
+          "color": "#f69c09"
         },
         {
           "name": "Pale-blue",
