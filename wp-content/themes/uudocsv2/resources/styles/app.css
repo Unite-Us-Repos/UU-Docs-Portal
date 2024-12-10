@@ -95,6 +95,9 @@ blockquote {
 	margin-top: 0;
 }
 
+ol ol {
+  list-style-type: lower-alpha!important;
+}
 h1 {
   @apply text-4xl md:text-5xl lg:text-6xl font-extrabold
 }
@@ -1261,7 +1264,7 @@ table p {
   }
 
   .product-box-gradient {
-    background: radial-gradient(circle, rgba(44,64,90,1) 0%, rgba(24,42,68,1) 56%);
+    background: radial-gradient(circle, rgba(44,64,90,1) 0%, rgba(11,21,56,1) 56%);
   }
 
   /* Overrides */
