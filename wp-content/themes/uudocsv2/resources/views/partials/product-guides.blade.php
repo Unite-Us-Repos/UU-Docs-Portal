@@ -21,7 +21,12 @@ $term_link = get_site_url() . '/' . $term->taxonomy . '/' . $term->slug . '/';
 <section class="component-section">
   <div class="component-inner-section">
     @foreach ($guides_by_sections as $guide_index => $section)
+    @php
+        // Check if this is the Public Resource Center Help Center section
+        $isPublicResourceSection = ($section['slug'] === 'public-resource-center-help-center');
+      @endphp
       @if ($section['posts'])
+      <div class="guides-{{ $section['slug'] }}">
         <h2 id="{{ $section['slug'] }}" class="flex flex-row mb-3 xl:-ml-10 gap-4 group">
           <a href="{{ $term_link }}#{{ $section['slug'] }}" class="copy-anchor flex items-center opacity-0 border-0 group-hover:opacity-100" aria-label="Anchor"><div x-data="" x-ripple="" class="button-ripple group-hover:opacity-100 w-6 h-6 text-slate-400 ring-1 ring-slate-900/5 rounded-md shadow-sm flex items-center justify-center hover:ring-slate-900/10 hover:shadow hover:text-action"><svg class="group-hover:opacity-100" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.06267 4.58604C5.28162 3.80499 4.01529 3.80499 3.23423 4.58604L1.23423 6.58605C0.453175 7.3671 0.453175 8.63344 1.23423 9.41449C2.01528 10.1955 3.28161 10.1955 4.06266 9.41449L4.61345 8.86371M4.23424 6.41448C5.01529 7.19553 6.28162 7.19553 7.06267 6.41448L9.06268 4.41447C9.84373 3.63342 9.84373 2.36708 9.06268 1.58603C8.28163 0.804981 7.0153 0.804981 6.23424 1.58603L5.68444 2.13584" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></a>
           {{ $section['title'] }}
@@ -59,6 +64,7 @@ $term_link = get_site_url() . '/' . $term->taxonomy . '/' . $term->slug . '/';
             </div>
           @endforeach
         </div>
+      </div>
         @if (count($section['posts']) > 4)
           <div class="mt-10 mb-10 flex justify-end align-middle">
             <button id="loadMore{{ $guide_index }}" type="button" class="test inline-flex button button-solid">
@@ -180,6 +186,17 @@ $term_link = get_site_url() . '/' . $term->taxonomy . '/' . $term->slug . '/';
   margin: -1px;
   padding: 0;
   border: 0;
+}
+/* Ensure "Public Resource Center Help Center" is always visible */
+.guides-public-resource-center-help-center {
+  display: block !important;
+}
+/* Hide these sections only for logged-out users */
+body:not(.logged-in) .guides-get-an-overview-of-the-implementation-process,
+body:not(.logged-in) .guides-set-up-a-solution,
+body:not(.logged-in) .guides-additional-resources,
+body:not(.logged-in) .release-notes  {
+    display: none !important;
 }
 
 </style>

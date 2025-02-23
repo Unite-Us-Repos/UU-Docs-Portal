@@ -4,7 +4,7 @@ $term = get_queried_object();
 $term_link = get_site_url() . '/' . $term->taxonomy . '/' . $term->slug . '/';
 @endphp
 @if ($related_release_notes)
-<section class="component-section">
+<section class="release-notes component-section">
     <div class="component-inner-section">
       <div class="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center mb-6">
         <div>

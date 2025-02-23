@@ -63,3 +63,20 @@ collect(['setup', 'filters', 'custom-post-types', 'shortcodes'])
             );
         }
     });
+
+
+
+    function add_guide_section_to_body_class($classes) {
+        if (is_singular('guide')) {
+            $terms = get_the_terms(get_the_ID(), 'guide_section');
+            if ($terms && !is_wp_error($terms)) {
+                foreach ($terms as $term) {
+                    $classes[] = 'guide-section-' . sanitize_html_class($term->slug);
+                }
+            }
+        }
+    
+        return $classes;
+    }
+    add_filter('body_class', 'add_guide_section_to_body_class');
+    

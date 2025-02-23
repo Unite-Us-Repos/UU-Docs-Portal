@@ -10,19 +10,6 @@ if ($terms) {
 <nav class="flex flex-1 flex-col">
   <ul role="list" class="list-none flex flex-1 flex-col gap-y-2">
     <li>
-      <ul role="list" class="list-none">
-          <li>@include('partials.content-search-modal')</li>
-          <li class="bg-white rounded-md border-b border-pale-blue">
-            <a href="https://app.uniteus.io/" target="_blank" class="hover:bg-pale-blue no-underline items-center group flex gap-x-3 rounded-md p-2 text-sm font-semibold" x-state:on="Current" x-state:off="Default">
-              <span class="flex text-white h-8 w-8 shrink-0 items-center justify-center rounded-md border text-sm font-medium bg-action">
-                {{ svg('acf.external-link')->class('w-5 h-5') }}
-              </span>
-              <span class="text-action font-medium">Log in to the Platform</span>
-            </a>
-          </li>
-      </ul>
-    </li>
-    <li>
       <ul x-data="{ selected: {{ $active_section }} }" role="list" class="list-none mt-2">
         <li class="mb-1 @if (is_page('release-notes') OR (('release_note' == get_post_type()) && is_singular('release_note'))) bg-light rounded-md @else @endif">
           <a href="/release-notes/" class="hover:bg-pale-blue no-underline items-center group flex gap-x-3 rounded-md p-2 text-sm font-semibold" x-state:on="Current" x-state:off="Default">

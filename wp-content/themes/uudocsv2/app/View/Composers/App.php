@@ -63,23 +63,26 @@ class App extends Composer
     public function isLoggedIn()
     {
         global $post;
-
+    
         if (!isset($post)) {
             return false;
         }
+    
         $current_page = $post->post_name;
-        $exclude_pages = [
-            'register',
-            'reset-password'
-        ];
-
-        if (in_array($current_page, $exclude_pages)) {
+        $exclude_pages = ['register', 'reset-password'];
+    
+        // Allow articles inside "Public Resource Center Help Center" to be visible
+        $isPublicGuide = is_singular('guide') && has_term('public-resource-center-help-center', 'guide_section');
+    
+        // Always allow Public Resource Directory and guides from Public Resource Center Help Center
+        if ($isPublicGuide || is_tax('product', 'public-resource-directory') || in_array($current_page, $exclude_pages)) {
             return true;
         }
-
-        $status = is_user_logged_in();
-        return $status;
+    
+        // Default: Only logged-in users get full access
+        return is_user_logged_in();
     }
+    
 
     public function loginForm()
     {
